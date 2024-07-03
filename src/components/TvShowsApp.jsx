@@ -8,10 +8,10 @@ export function TVShowsApp() {
 
     return (
         <main className="tvShowsApp">
-            <h1>Game of Thrones Episodes</h1>
+            <h1>{ep1._links.show.name}</h1>
             <div className="tvShowsCard">
-                <h2>{ep1.name}</h2>
-                <img src={ep1.image.medium} />
+                <h2 className="episode-header">{ep1.name}</h2>
+                <img className="episode-image" src={ep1.image.medium} />
                 <div
                     className="episode-summary"
                     dangerouslySetInnerHTML={summaryHTML}
