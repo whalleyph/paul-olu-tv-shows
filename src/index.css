@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.5;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+.tvShowsApp {
+    padding: 1rem;
+}
+
+.demonstratingProps {
+    background: gainsboro;
+    padding: 1rem;
+}
