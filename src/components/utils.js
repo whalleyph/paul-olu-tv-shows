@@ -5,4 +5,8 @@ function createEpisodeCode(season, episodeNumber) {
     return `S${seasonOutput}E${episodeOutput}`;
 }
 
-export { createEpisodeCode };
+function searchEpisodes(searchTerm, episodeList){
+    return [];
+}
+
+export { createEpisodeCode, searchEpisodes};
