@@ -16,7 +16,10 @@ export function TVShowsApp() {
             <p>
                 Data from <a href="TVMaze.com">TVMaze.com</a>
             </p>
-            <SearchBox />
+            <SearchBox 
+                listLength={episodeList.length}
+                totalEpisodes={episodes.length}
+            />
             <div className="episode-list">{episodeList}</div>
         </main>
     );

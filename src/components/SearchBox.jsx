@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function SearchBox() {
+export function SearchBox(props) {
     const [searchTerm, setSearchTerm] = useState("")
 
     function handleChange(event){
@@ -9,11 +9,13 @@ export function SearchBox() {
     }
 
     return (
-        <div>
+        <div className="search-area">
             <input 
                 className="search-box"
-                onChange={handleChange} 
+                onChange={handleChange}
+                placeholder="Search..."
             />
+            <p>Displaying {props.listLength} / {props.totalEpisodes} episodes</p>
         </div>
     )
 }
