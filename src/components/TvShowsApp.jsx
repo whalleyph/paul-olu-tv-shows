@@ -1,4 +1,5 @@
 import episodes from "../data/gameOfThronesEpisodes.json";
+import { EpisodeCard } from "./EpisodeCard";
 export function TVShowsApp() {
     const ep1 = episodes[0];
 
@@ -9,14 +10,9 @@ export function TVShowsApp() {
     return (
         <main className="tvShowsApp">
             <h1>{ep1._links.show.name}</h1>
-            <div className="tvShowsCard">
-                <h2 className="episode-header">{ep1.name}</h2>
-                <img className="episode-image" src={ep1.image.medium} />
-                <div
-                    className="episode-summary"
-                    dangerouslySetInnerHTML={summaryHTML}
-                />
-            </div>
+            <EpisodeCard
+            episode={ep1} 
+            />
         </main>
     );
 }
