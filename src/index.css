@@ -21,7 +21,25 @@ select {
     padding: 1rem;
 }
 
-.demonstratingProps {
-    background: gainsboro;
-    padding: 1rem;
+.episode-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.episode-image {
+    border-radius: 0.5rem;
+}
+
+.tvShowsCard {
+    background-color: lightgrey;
+    border: solid 0.1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 15rem;
+    font-size: 12px;
+    display: flex;          
+    flex-direction: column; 
+    position: relative;
 }

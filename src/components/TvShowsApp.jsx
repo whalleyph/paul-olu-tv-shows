@@ -14,7 +14,7 @@ export function TVShowsApp() {
             <p>
                 Data from <a href="TVMaze.com">TVMaze.com</a>
             </p>
-            {episodeList}
+            <div className="episode-list">{episodeList}</div>
         </main>
     );
 }
