@@ -1,21 +1,22 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export function SearchBox(props) {
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState("");
 
-    function handleChange(event){
-        setSearchTerm(event.target.value)
-        console.log(searchTerm)
+    function handleChange(event) {
+        setSearchTerm(event.target.value);
     }
 
     return (
         <div className="search-area">
-            <input 
+            <input
                 className="search-box"
                 onChange={handleChange}
                 placeholder="Search..."
             />
-            <p>Displaying {props.listLength} / {props.totalEpisodes} episodes</p>
+            <p>
+                Displaying {props.listLength} / {props.totalEpisodes} episodes
+            </p>
         </div>
-    )
+    );
 }
