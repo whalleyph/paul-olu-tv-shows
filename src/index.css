@@ -19,6 +19,7 @@ select {
 
 .tvShowsApp {
     padding: 1rem;
+    /* gap: 0.5rem; */
 }
 
 .episode-list {

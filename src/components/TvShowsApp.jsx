@@ -1,5 +1,7 @@
 import episodes from "../data/gameOfThronesEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
+import { SearchBox } from "./SearchBox";
+
 export function TVShowsApp() {
     const ep1 = episodes[0];
     const episodeSlice = episodes.slice(0, 6);
@@ -14,6 +16,7 @@ export function TVShowsApp() {
             <p>
                 Data from <a href="TVMaze.com">TVMaze.com</a>
             </p>
+            <SearchBox />
             <div className="episode-list">{episodeList}</div>
         </main>
     );
