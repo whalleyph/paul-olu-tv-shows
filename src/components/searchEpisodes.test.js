@@ -28,29 +28,6 @@ describe("searchEpisodes", () => {
     })
 
     test("case insensitive", () => {
-        console.log("expect: ", searchEpisodes("DUBIOUS", episodes))
-        console.log("toEqual: ", [episodes[4]])
         expect(searchEpisodes("DUBIOUS", episodes)).toEqual([episodes[4]])
     })
 })
-
-
-
-/*
-function episodeHasTermInAnyPropertyValue(episode, searchKey) {
-    const allValuesInEpisode = Object.values(episode);
-    const stringValuesInEpisode = allValuesInEpisode.filter(
-        (value) => typeof value === "string"
-    );
-    return stringValuesInEpisode.some((value) =>
-        value.toLowerCase().includes(searchKey.toLowerCase())
-    );
-}
-
-function filterForMatchingEpisodes(episodesArray, searchTerm) {
-    //Function filters for objects that contain values
-    return episodesArray.filter((episode) =>
-        episodeHasTermInAnyPropertyValue(episode, searchTerm)
-    );
-}
-    */
