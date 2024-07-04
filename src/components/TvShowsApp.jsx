@@ -3,7 +3,7 @@ import { useState } from "react";
 import episodes from "../data/mythBustersEpisodes.json"
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
-import { searchEpisodes } from "./utils";
+import { searchEpisodes, createEpisodeCode } from "./utils";
 
 export function TVShowsApp() {
     const ep1 = episodes[0];
@@ -14,7 +14,12 @@ export function TVShowsApp() {
             : searchEpisodes(searchTerm, episodes);
 
     const episodeList = selectedEpisodes.map((episode) => {
-        return <EpisodeCard episode={episode} key={episode.id} />;
+        const episodeCode = createEpisodeCode(
+            episode.season,
+            episode.number,
+        );
+        const episodeTitle=`${episode.name} - ${episodeCode}`
+        return <EpisodeCard episodeTitle={episodeTitle} episode={episode} key={episode.id} />;
     });
 
     return (

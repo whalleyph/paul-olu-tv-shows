@@ -5,6 +5,10 @@ export function SearchBox(props) {
 
     return (
         <div className="search-area">
+            <select
+                className="select-box"
+                
+            />
             <input
                 className="search-box"
                 onChange={handleChange}
