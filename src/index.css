@@ -19,6 +19,7 @@ select {
 
 .tvShowsApp {
     padding: 1rem;
+    /* gap: 0.5rem; */
 }
 
 .episode-list {
@@ -39,7 +40,18 @@ select {
     padding: 0.5rem;
     width: 15rem;
     font-size: 12px;
-    display: flex;          
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     position: relative;
+}
+
+.search-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.search-box {
+    max-height: 2.5rem;
 }
