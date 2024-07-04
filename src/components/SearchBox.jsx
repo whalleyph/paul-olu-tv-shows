@@ -1,7 +1,4 @@
-import { useState } from "react";
-
 export function SearchBox(props) {
-
     function handleChange(event) {
         props.setSearchTerm(event.target.value);
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import { createEpisodeCode } from "./utils";
 
 export function EpisodeCard(props) {

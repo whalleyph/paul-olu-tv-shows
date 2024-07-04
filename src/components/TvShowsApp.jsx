@@ -1,13 +1,17 @@
 import { useState } from "react";
-import episodes from "../data/gameOfThronesEpisodes.json";
+//import episodes from "../data/gameOfThronesEpisodes.json";
+import episodes from "../data/mythBustersEpisodes.json"
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes } from "./utils";
 
 export function TVShowsApp() {
     const ep1 = episodes[0];
-    const [searchTerm, setSearchTerm] = useState("")
-    const selectedEpisodes = searchTerm.length === 0 ? episodes : searchEpisodes(searchTerm, episodes)
+    const [searchTerm, setSearchTerm] = useState("");
+    const selectedEpisodes =
+        searchTerm.length === 0
+            ? episodes
+            : searchEpisodes(searchTerm, episodes);
 
     const episodeList = selectedEpisodes.map((episode) => {
         return <EpisodeCard episode={episode} key={episode.id} />;
