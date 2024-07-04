@@ -6,22 +6,15 @@ import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
 
 export function TVShowsApp() {
-    const ep1 = episodes[0];
     const [searchTerm, setSearchTerm] = useState("");
     const selectedEpisodes =
         searchTerm.length === 0
             ? episodes
             : searchEpisodes(searchTerm, episodes);
-    const selectedEpisodeTitles = [];
 
     const episodeList = selectedEpisodes.map((episode) => {
         const episodeCode = createEpisodeCode(episode.season, episode.number);
         const episodeTitle = `${episode.name} - ${episodeCode}`;
-        selectedEpisodeTitles.push({
-            title: episodeTitle,
-            name: episode.name,
-            key: episode.id,
-        });
         return (
             <EpisodeCard
                 episodeTitle={episodeTitle}
@@ -33,7 +26,7 @@ export function TVShowsApp() {
 
     return (
         <main className="tvShowsApp">
-            <h1>{ep1._links.show.name}</h1>
+            <h1>{episodes[0]._links.show.name}</h1>
             <p>
                 Data from <a href="TVMaze.com">TVMaze.com</a>
             </p>
@@ -41,7 +34,6 @@ export function TVShowsApp() {
                 listLength={episodeList.length}
                 totalEpisodes={episodes.length}
                 setSearchTerm={setSearchTerm}
-                titleArray={selectedEpisodeTitles}
             />
             <div className="episode-list">{episodeList}</div>
         </main>
