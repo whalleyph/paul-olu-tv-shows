@@ -4,9 +4,11 @@ import episodes from "../data/mythBustersEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
-import { fetchEpisodes } from "../data/api";
+// import { fetchEpisodes } from "../data/api";
+// import fetch from "node-fetch";
 
 export function TVShowsApp() {
+    // const [episodes, setEpisodes] = useState([])
     const [searchTerm, setSearchTerm] = useState("");
     const selectedEpisodes =
         searchTerm.length === 0
@@ -27,7 +29,8 @@ export function TVShowsApp() {
 
     useEffect(() => {
         console.log("use effect ran")
-        fetchEpisodes(82)
+
+        
     }, [])
 
     return (
