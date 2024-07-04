@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import episodes from "../data/gameOfThronesEpisodes.json";
 import episodes from "../data/mythBustersEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
+import { fetchEpisodes } from "../data/api";
 
 export function TVShowsApp() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -23,6 +24,11 @@ export function TVShowsApp() {
             />
         );
     });
+
+    useEffect(() => {
+        console.log("use effect ran")
+        fetchEpisodes(82)
+    }, [])
 
     return (
         <main className="tvShowsApp">
