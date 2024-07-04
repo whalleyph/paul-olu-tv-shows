@@ -1,6 +1,6 @@
 import { useState } from "react";
 //import episodes from "../data/gameOfThronesEpisodes.json";
-import episodes from "../data/mythBustersEpisodes.json"
+import episodes from "../data/mythBustersEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
@@ -12,14 +12,23 @@ export function TVShowsApp() {
         searchTerm.length === 0
             ? episodes
             : searchEpisodes(searchTerm, episodes);
+    const selectedEpisodeTitles = [];
 
     const episodeList = selectedEpisodes.map((episode) => {
-        const episodeCode = createEpisodeCode(
-            episode.season,
-            episode.number,
+        const episodeCode = createEpisodeCode(episode.season, episode.number);
+        const episodeTitle = `${episode.name} - ${episodeCode}`;
+        selectedEpisodeTitles.push({
+            title: episodeTitle,
+            name: episode.name,
+            key: episode.id,
+        });
+        return (
+            <EpisodeCard
+                episodeTitle={episodeTitle}
+                episode={episode}
+                key={episode.id}
+            />
         );
-        const episodeTitle=`${episode.name} - ${episodeCode}`
-        return <EpisodeCard episodeTitle={episodeTitle} episode={episode} key={episode.id} />;
     });
 
     return (
@@ -32,6 +41,7 @@ export function TVShowsApp() {
                 listLength={episodeList.length}
                 totalEpisodes={episodes.length}
                 setSearchTerm={setSearchTerm}
+                titleArray={selectedEpisodeTitles}
             />
             <div className="episode-list">{episodeList}</div>
         </main>

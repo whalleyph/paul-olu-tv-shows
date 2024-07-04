@@ -10,7 +10,9 @@ function searchEpisodes(searchTerm, episodeList) {
 
     const results = episodeList.filter((episode) => {
         const lowerCaseName = episode.name.toLowerCase();
-        const lowerCaseSummary = episode.summary.toLowerCase();
+        const lowerCaseSummary = episode.summary
+            ? episode.summary.toLowerCase()
+            : "";
 
         const isInName = lowerCaseName.includes(lowerCaseSearchTerm);
         const isInSummary = lowerCaseSummary.includes(lowerCaseSearchTerm);
