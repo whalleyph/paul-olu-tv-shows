@@ -15,7 +15,7 @@ export function EpisodeCard(props) {
             <h2 className="episode-header">
                 {props.episode.name} - {episodeCode}
             </h2>
-            <img className="episode-image" src={props.episode.image.medium} />
+            {props.episode.image && <img className="episode-image" src={props.episode.image.medium} />}
             <div
                 className="episode-summary"
                 dangerouslySetInnerHTML={summaryHTML}
