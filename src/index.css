@@ -44,3 +44,14 @@ select {
     flex-direction: column;
     position: relative;
 }
+
+.search-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.search-box {
+    max-height: 2.5rem;
+}
