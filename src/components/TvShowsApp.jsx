@@ -1,12 +1,15 @@
+import { useState } from "react";
 import episodes from "../data/gameOfThronesEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
+import { searchEpisodes } from "./utils";
 
 export function TVShowsApp() {
     const ep1 = episodes[0];
-    const episodeSlice = episodes.slice(0, 6);
+    const [searchTerm, setSearchTerm] = useState("")
+    const selectedEpisodes = searchTerm.length === 0 ? episodes : searchEpisodes(searchTerm, episodes)
 
-    const episodeList = episodeSlice.map((episode) => {
+    const episodeList = selectedEpisodes.map((episode) => {
         return <EpisodeCard episode={episode} key={episode.id} />;
     });
 
@@ -19,6 +22,7 @@ export function TVShowsApp() {
             <SearchBox
                 listLength={episodeList.length}
                 totalEpisodes={episodes.length}
+                setSearchTerm={setSearchTerm}
             />
             <div className="episode-list">{episodeList}</div>
         </main>

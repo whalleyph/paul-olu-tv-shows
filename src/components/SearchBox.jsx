@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 export function SearchBox(props) {
-    const [searchTerm, setSearchTerm] = useState("");
 
     function handleChange(event) {
-        setSearchTerm(event.target.value);
+        props.setSearchTerm(event.target.value);
     }
 
     return (
