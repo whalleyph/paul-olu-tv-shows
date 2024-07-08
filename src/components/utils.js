@@ -23,4 +23,19 @@ function searchEpisodes(searchTerm, episodeList) {
     return results;
 }
 
-export { createEpisodeCode, searchEpisodes };
+function getIdFromShowName(name, tvShowList) {}
+
+function sortByShowName(a, b) {
+    const nameA = a.props.children.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.props.children.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    // names must be equal
+    return 0;
+}
+
+export { createEpisodeCode, searchEpisodes, getIdFromShowName, sortByShowName };
