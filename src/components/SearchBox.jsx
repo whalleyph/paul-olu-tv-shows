@@ -25,7 +25,7 @@ export function SearchBox(props) {
 
     const titleList = episodeList.map((episode) => {
         return (
-            <option key={episode.id} value={episode.summary}>
+            <option key={episode.key} value={episode.key}>
                 {episode.title}
             </option>
         );

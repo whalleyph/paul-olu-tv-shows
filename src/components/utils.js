@@ -14,16 +14,15 @@ function searchEpisodes(searchTerm, episodeList) {
             ? episode.summary.toLowerCase()
             : "";
 
+        const id = episode.id === parseInt(lowerCaseSearchTerm);
         const isInName = lowerCaseName.includes(lowerCaseSearchTerm);
         const isInSummary = lowerCaseSummary.includes(lowerCaseSearchTerm);
 
-        return isInName || isInSummary;
+        return id || isInName || isInSummary;
     });
 
     return results;
 }
-
-function getIdFromShowName(name, tvShowList) {}
 
 function sortByShowName(a, b) {
     const nameA = a.props.children.toUpperCase(); // ignore upper and lowercase
@@ -38,4 +37,4 @@ function sortByShowName(a, b) {
     return 0;
 }
 
-export { createEpisodeCode, searchEpisodes, getIdFromShowName, sortByShowName };
+export { createEpisodeCode, searchEpisodes, sortByShowName };
