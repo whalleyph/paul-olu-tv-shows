@@ -7,7 +7,7 @@ import { searchEpisodes, createEpisodeCode } from "./utils";
 import axios from "axios";
 
 export function TVShowsApp() {
-    const [episodes, setEpisodes] = useState([])
+    const [episodes, setEpisodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const selectedEpisodes =
         searchTerm.length === 0
@@ -26,18 +26,17 @@ export function TVShowsApp() {
         );
     });
 
-    // component was loading everything before the use effect ran
-    // inital state is empty array
-    // reference errors from trying to access properties that didn't exist
-    // add the ternary for the initial render
     useEffect(() => {
-        axios.get("https://api.tvmaze.com/shows/82/episodes").then(({data}) => {
-            setEpisodes(data)
-        })
-    }, [])
+        axios
+            .get("https://api.tvmaze.com/shows/82/episodes")
+            .then(({ data }) => {
+                setEpisodes(data);
+            });
+    }, []);
 
-    return episodes.length === 0 ? <p>no episodes found</p> :
-     (
+    return episodes.length === 0 ? (
+        <p>no episodes found</p>
+    ) : (
         <main className="tvShowsApp">
             <h1>{episodes[0]._links.show.name}</h1>
             <p>
