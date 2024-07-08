@@ -46,6 +46,7 @@ export function TVShowsApp() {
                 totalEpisodes={episodes.length}
                 setSearchTerm={setSearchTerm}
                 episodeData={episodes}
+                tvShowData={tvShowData}
             />
             <div className="episode-list">{episodeList}</div>
         </main>

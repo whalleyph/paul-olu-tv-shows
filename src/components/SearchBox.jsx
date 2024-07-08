@@ -13,9 +13,11 @@ export function SearchBox(props) {
         };
     });
 
-    function handleChange(event) {
-        props.setSearchTerm(event.target.value);
-    }
+    const tvShowList = props.tvShowData.map((show) => {
+        return (<option key={show.id}>{show.name}
+        </option>
+        )
+    })
 
     const titleList = episodeList.map((episode) => {
         return (
@@ -25,17 +27,19 @@ export function SearchBox(props) {
         );
     });
 
-    const tvShowList = []
+    function handleChange(event) {
+        props.setSearchTerm(event.target.value);
+    }
+
 
     function handleSelection(event) {
-        console.log(event.target.value)
         props.setSearchTerm(event.target.value);
     }
 
     return (
         <div className="search-area">
             <select className="tv-show-select" onChange={() => {}}>
-
+                {...tvShowList}
             </select>
 
             <select onChange={handleSelection} className="select-box">
