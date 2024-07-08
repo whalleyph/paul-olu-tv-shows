@@ -3,12 +3,12 @@ import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
 import axios from "axios";
-import tvShowData from "../data/tvShowData.json"
+import tvShowData from "../data/tvShowData.json";
 
 export function TVShowsApp() {
     const [episodes, setEpisodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedShow, setSelectedShow] = useState(250)
+    const [selectedShow, setSelectedShow] = useState(496);
     const selectedEpisodes =
         searchTerm.length === 0
             ? episodes

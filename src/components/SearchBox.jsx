@@ -1,5 +1,5 @@
 // import episodes from "../data/mythBustersEpisodes.json";
-import { createEpisodeCode } from "./utils";
+import { createEpisodeCode, sortByShowName } from "./utils";
 
 export function SearchBox(props) {
     const episodeList = props.episodeData.map((episode) => {
@@ -13,22 +13,15 @@ export function SearchBox(props) {
         };
     });
 
-    const tvShowList = props.tvShowData.map((show) => {
-        return (<option key={show.id} value={show.id}>{show.name}
-        </option>
-        )
-    }).sort((a, b) => {
-        const nameA = a.props.children.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.props.children.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        // names must be equal
-        return 0;
-      });
+    const tvShowList = props.tvShowData
+        .map((show) => {
+            return (
+                <option key={show.id} value={show.id}>
+                    {show.name}
+                </option>
+            );
+        })
+        .sort(sortByShowName);
 
     const titleList = episodeList.map((episode) => {
         return (
@@ -42,20 +35,18 @@ export function SearchBox(props) {
         props.setSearchTerm(event.target.value);
     }
 
-
     function handleEpisodeSelection(event) {
         props.setSearchTerm(event.target.value);
     }
 
     function handleShowSelection(event) {
-        props.setSelectedShow(event.target.value)
+        props.setSelectedShow(event.target.value);
     }
 
     // add ternary for initial render
     return (
         <div className="search-area">
             <select className="tv-show-select" onChange={handleShowSelection}>
-            <option value="">Select a show...</option>
                 {...tvShowList}
             </select>
 
