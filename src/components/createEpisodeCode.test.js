@@ -1,7 +1,7 @@
 import { test, expect, describe } from "vitest";
 import { createEpisodeCode } from "./utils";
 
-describe.skip("", () => {
+describe("", () => {
     test("Return value to be a string", () => {
         expect(typeof createEpisodeCode(5, 1)).toBe("string");
     });

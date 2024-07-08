@@ -1,4 +1,3 @@
-// import episodes from "../data/mythBustersEpisodes.json";
 import { createEpisodeCode, sortByShowName } from "./utils";
 
 export function SearchBox(props) {
