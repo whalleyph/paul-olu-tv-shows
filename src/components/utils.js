@@ -23,5 +23,8 @@ function searchEpisodes(searchTerm, episodeList) {
     return results;
 }
 
+function getIdFromShowName(name, tvShowList){
+    
+}
 
-export { createEpisodeCode, searchEpisodes };
+export { createEpisodeCode, searchEpisodes, getIdFromShowName };

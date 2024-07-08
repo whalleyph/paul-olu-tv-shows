@@ -14,14 +14,14 @@ export function SearchBox(props) {
     });
 
     const tvShowList = props.tvShowData.map((show) => {
-        return (<option key={show.id}>{show.name}
+        return (<option key={show.id} value={show.id}>{show.name}
         </option>
         )
     })
 
     const titleList = episodeList.map((episode) => {
         return (
-            <option key={episode.key} value={episode.summary}>
+            <option key={episode.id} value={episode.summary}>
                 {episode.title}
             </option>
         );
@@ -32,17 +32,23 @@ export function SearchBox(props) {
     }
 
 
-    function handleSelection(event) {
+    function handleEpisodeSelection(event) {
         props.setSearchTerm(event.target.value);
     }
 
+    function handleShowSelection(event) {
+        props.setSelectedShow(event.target.value)
+    }
+
+    // add ternary for initial render
     return (
         <div className="search-area">
-            <select className="tv-show-select" onChange={() => {}}>
+            <select className="tv-show-select" onChange={handleShowSelection}>
+            <option value="">Select a show...</option>
                 {...tvShowList}
             </select>
 
-            <select onChange={handleSelection} className="select-box">
+            <select onChange={handleEpisodeSelection} className="select-box">
                 <option value="">Select an episode...</option>
                 {...titleList}
             </select>

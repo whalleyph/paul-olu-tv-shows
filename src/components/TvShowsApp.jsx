@@ -8,6 +8,7 @@ import tvShowData from "../data/tvShowData.json"
 export function TVShowsApp() {
     const [episodes, setEpisodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedShow, setSelectedShow] = useState(251)
     const selectedEpisodes =
         searchTerm.length === 0
             ? episodes
@@ -27,11 +28,11 @@ export function TVShowsApp() {
 
     useEffect(() => {
         axios
-            .get("https://api.tvmaze.com/shows/82/episodes")
+            .get(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
             .then(({ data }) => {
                 setEpisodes(data);
             });
-    }, []);
+    }, [selectedShow]);
 
     return episodes.length === 0 ? (
         <p>no episodes found</p>
@@ -47,6 +48,7 @@ export function TVShowsApp() {
                 setSearchTerm={setSearchTerm}
                 episodeData={episodes}
                 tvShowData={tvShowData}
+                setSelectedShow={setSelectedShow}
             />
             <div className="episode-list">{episodeList}</div>
         </main>
