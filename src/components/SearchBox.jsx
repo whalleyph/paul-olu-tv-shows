@@ -17,7 +17,18 @@ export function SearchBox(props) {
         return (<option key={show.id} value={show.id}>{show.name}
         </option>
         )
-    })
+    }).sort((a, b) => {
+        const nameA = a.props.children.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.props.children.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      });
 
     const titleList = episodeList.map((episode) => {
         return (

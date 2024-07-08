@@ -8,7 +8,7 @@ import tvShowData from "../data/tvShowData.json"
 export function TVShowsApp() {
     const [episodes, setEpisodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedShow, setSelectedShow] = useState(251)
+    const [selectedShow, setSelectedShow] = useState(250)
     const selectedEpisodes =
         searchTerm.length === 0
             ? episodes
