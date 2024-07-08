@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-//import episodes from "../data/gameOfThronesEpisodes.json";
-// import episodes from "../data/mythBustersEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
 import axios from "axios";
+import tvShowData from "../data/tvShowData.json"
 
 export function TVShowsApp() {
     const [episodes, setEpisodes] = useState([]);
