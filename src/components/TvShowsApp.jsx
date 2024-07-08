@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import episodes from "../data/gameOfThronesEpisodes.json";
-import episodes from "../data/mythBustersEpisodes.json";
+// import episodes from "../data/mythBustersEpisodes.json";
 import { EpisodeCard } from "./EpisodeCard";
 import { SearchBox } from "./SearchBox";
 import { searchEpisodes, createEpisodeCode } from "./utils";
+import axios from "axios";
 
 export function TVShowsApp() {
+    const [episodes, setEpisodes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const selectedEpisodes =
         searchTerm.length === 0
@@ -24,7 +26,17 @@ export function TVShowsApp() {
         );
     });
 
-    return (
+    useEffect(() => {
+        axios
+            .get("https://api.tvmaze.com/shows/82/episodes")
+            .then(({ data }) => {
+                setEpisodes(data);
+            });
+    }, []);
+
+    return episodes.length === 0 ? (
+        <p>no episodes found</p>
+    ) : (
         <main className="tvShowsApp">
             <h1>{episodes[0]._links.show.name}</h1>
             <p>

@@ -1,16 +1,15 @@
-import episodes from "../data/mythBustersEpisodes.json"
+import episodes from "../data/mythBustersEpisodes.json";
 import { createEpisodeCode } from "./utils";
 
 export function SearchBox(props) {
-
     const episodeList = episodes.map((episode) => {
         const episodeCode = createEpisodeCode(episode.season, episode.number);
         const episodeTitle = `${episode.name} - ${episodeCode}`;
-        return ({
+        return {
             title: episodeTitle,
             name: episode.name,
             key: episode.id,
-        });
+        };
     });
 
     function handleChange(event) {
@@ -26,14 +25,15 @@ export function SearchBox(props) {
     });
 
     function handleSelection(event) {
-        props.setSearchTerm(event.target.value)
+        props.setSearchTerm(event.target.value);
     }
 
     return (
         <div className="search-area">
             <select onChange={handleSelection} className="select-box">
                 <option value="">Select an episode...</option>
-                {...titleList}</select>
+                {...titleList}
+            </select>
             <input
                 className="search-box"
                 onChange={handleChange}
