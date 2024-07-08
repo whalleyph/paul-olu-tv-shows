@@ -1,14 +1,15 @@
-import episodes from "../data/mythBustersEpisodes.json";
+// import episodes from "../data/mythBustersEpisodes.json";
 import { createEpisodeCode } from "./utils";
 
 export function SearchBox(props) {
-    const episodeList = episodes.map((episode) => {
+    const episodeList = props.episodeData.map((episode) => {
         const episodeCode = createEpisodeCode(episode.season, episode.number);
         const episodeTitle = `${episode.name} - ${episodeCode}`;
         return {
             title: episodeTitle,
             name: episode.name,
             key: episode.id,
+            summary: episode.summary,
         };
     });
 
@@ -18,18 +19,25 @@ export function SearchBox(props) {
 
     const titleList = episodeList.map((episode) => {
         return (
-            <option key={episode.key} value={episode.name}>
+            <option key={episode.key} value={episode.summary}>
                 {episode.title}
             </option>
         );
     });
 
+    const tvShowList = []
+
     function handleSelection(event) {
+        console.log(event.target.value)
         props.setSearchTerm(event.target.value);
     }
 
     return (
         <div className="search-area">
+            <select className="tv-show-select" onChange={() => {}}>
+
+            </select>
+
             <select onChange={handleSelection} className="select-box">
                 <option value="">Select an episode...</option>
                 {...titleList}
