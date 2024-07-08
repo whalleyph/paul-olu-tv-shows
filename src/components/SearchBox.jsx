@@ -1,4 +1,3 @@
-// import episodes from "../data/mythBustersEpisodes.json";
 import { createEpisodeCode, sortByShowName } from "./utils";
 
 export function SearchBox(props) {
@@ -8,12 +7,12 @@ export function SearchBox(props) {
         return {
             title: episodeTitle,
             name: episode.name,
-            key: episode.id,
+            id: episode.id,
             summary: episode.summary,
         };
     });
 
-    const tvShowList = props.tvShowData
+    const tvShowOptionsList = props.tvShowData
         .map((show) => {
             return (
                 <option key={show.id} value={show.id}>
@@ -23,9 +22,9 @@ export function SearchBox(props) {
         })
         .sort(sortByShowName);
 
-    const titleList = episodeList.map((episode) => {
+    const titleOptionsList = episodeList.map((episode) => {
         return (
-            <option key={episode.id} value={episode.summary}>
+            <option key={episode.id} value={episode.id}>
                 {episode.title}
             </option>
         );
@@ -41,18 +40,19 @@ export function SearchBox(props) {
 
     function handleShowSelection(event) {
         props.setSelectedShow(event.target.value);
+        props.setSearchTerm("");
     }
 
     // add ternary for initial render
     return (
         <div className="search-area">
             <select className="tv-show-select" onChange={handleShowSelection}>
-                {...tvShowList}
+                {tvShowOptionsList}
             </select>
 
             <select onChange={handleEpisodeSelection} className="select-box">
                 <option value="">Select an episode...</option>
-                {...titleList}
+                {titleOptionsList}
             </select>
             <input
                 className="search-box"
